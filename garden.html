@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>鱼鱼的心声</title>
+		<link href="css/garden.css" type="text/css" rel="stylesheet">
+		<script type="text/javascript" src="js/all.js"></script>
+		<!-- <script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/functions.js"></script>
+		<script type="text/javascript" src="js/garden.js"></script> -->
+	</head>
+
+	<body>
+
+		<div style="display: none;">
+			<audio id="car_audio"  controls="controls" preload="preload" loop="loop" >
+				<source src="sounds/ekin.mp3" type="audio/mpeg">
+				您的浏览器不支持HTML5音频格式
+			</audio>
+		</div>
+		<div id="popup" style="left:0;top:0;width: 100%;height:100%;position:absolute;background-color: #eff;z-index: 10;background:url(img/bear2-1.jpg) center no-repeat;background-size:cover;">
+
+			<section class='u-arrow'>
+				<img src="img/btn01_arrow.png">
+			</section>
+
+		</div>
+
+		<div id="mainDiv" >
+			<div id="content" >
+
+				<div id="code" style="margin:auto auto;display: none">
+					不知不觉之间，
+					<br>
+					我们已一起走过四年；
+					<br>
+					仿佛已见证万千，
+					<br>
+					又好似只是初见。
+					<br>
+					<br>
+					只有当走过熟悉的路线，
+					<br>
+					才想起和你曾在此无数次流连；
+					<br>
+					原来彼此早已改变，
+					<br>
+					永恒的只是心中的那份甜。
+					<br>
+					<br>
+					永远有说不尽的蜜语甜言，
+					<br>
+					永远有玩不腻的亲昵笑点；
+					<br>
+					一起的时光值得怀缅，
+					<br>
+					分离的日子加倍思念。
+					<br>
+					<br>
+					原以为，人会变，爱情也会搁浅，
+					<br>
+					却发现：爱念会将两人始终相连，
+					<br>
+					只要紧紧拥抱，
+					<br>
+					就能补足对方的缺点。
+					<br>
+					<br>
+					无论以后会遇到怎样的挑战，
+					<br>
+					无论未来会有什么考验；
+					<br>
+					只要守住你的笑脸，
+					<br>
+					就是最灿烂的春天。
+					<br>
+
+					<br>
+					<br>
+					熊子
+					<br />
+					永远爱你，永远快乐...
+					<br />
+					<br />
+					<br />
+					<input value="more" type="button" class="button blue rarrow" onclick="change_scene();return false;">
+
+				</div>
+
+				<div id="loveHeart" style="display: none;">
+					<canvas id="garden"></canvas>
+					<div id="words">
+						<div id="messages">
+							熊子，这是我们在一起的时光。
+							<div id="elapseClock"></div>
+						</div>
+						<div id="loveu">
+							祝你生日快乐。
+							<br/>
+							<div class="signature">
+								- 小金鱼
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			var offsetX = $("#loveHeart").width() / 2;
+			var offsetY = $("#loveHeart").height() / 2 - 55;
+			//adjustCodePosition();
+			var together = new Date();
+			together.setFullYear(2010, 9, 17);
+			together.setHours(20);
+			together.setMinutes(0);
+			together.setSeconds(0);
+			together.setMilliseconds(0);
+
+			function change_scene() {
+				// var myVideo = document.getElementById("car_audio");
+				// myVideo.play();
+
+				$("#code").hide();
+				$("#loveHeart").show();
+
+				setTimeout(function() {
+					startHeartAnimation();
+				}, 10);
+
+				timeElapse(together);
+				setInterval(function() {
+					timeElapse(together);
+				}, 10);
+			}
+
+			function popup_hide() {
+				$("#popup").slideUp();
+				$("#code").show();
+				var myVideo = document.getElementById("car_audio");
+				myVideo.play();
+				$("#code").typewriter();
+			}
+
+			$(function() {
+				// console.log(popup_hide);
+				var touchdev = false;
+				if (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('iPod') > 0 || navigator.userAgent.indexOf('iPad') > 0 || navigator.userAgent.indexOf('Android') > 0) {
+					touchdev = true;
+				}
+				if (touchdev == false) {
+					//$("#popup").hide();
+					$("#popup").bind('mousedown', popup_hide, false);
+
+				} else {
+					$("#popup").bind("touchstart", popup_hide, false);
+
+				}
+
+			})
+
+		</script>
+
+	</body>
+</html>
